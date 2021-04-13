@@ -1,0 +1,11 @@
+#!bin/bash
+
+for dir in $(ls -ld $PWD/* | grep "^d" | awk '{print $9}') ;do
+
+	for subdir in $(ls -ld $dir/* | grep "^d" | awk '{print $9}') ;do
+		ls -d $subdir/*.lhe > `basename $dir`_`basename $subdir`.list
+		source testmore.sh `basename $dir`_`basename $subdir`.list
+		echo "MUYAHO"
+	done
+done
+
